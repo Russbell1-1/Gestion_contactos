@@ -52,16 +52,36 @@ void mostrarContactos(contactoEmail contactos[],int n){
 	}
 }
 
+string obtenerDominio(string correo){
+	int pos=correo.find('@');
+	if(pos!=-1)return correo.substr(pos+1);
+	return "";
+}
+
+void mostrarOrdenadoPorDominio(contactoEmail contactos[],int n){
+	for(int i=0;i<n-1;i++){
+		for(int j=i+1;j<n;j++){
+			if(obtenerDominio(contactos[i].email)>obtenerDominio(contactos[j].email)){
+				contactoEmail temp=contactos[i];
+				contactos[i]=contactos[j];
+				contactos[j]=temp;
+			}
+		}
+	}
+	mostrarContactos(contactos,n);
+}
+
 int main(){
 	contactoEmail contactos[100];
 	int n=0,op;
 	do{
-		cout<<"1. Agregar contacto\n2. Eliminar contacto\n3. Mostrar contactos\nOpcion: ";
+		cout<<"1. Agregar contacto\n2. Eliminar contacto\n3. Mostrar contactos\n4. Mostrar ordenado por servidor\nOpcion: ";
 		cin>>op;
 		switch(op){
 			case 1:agregarContacto(contactos,n);break;
 			case 2:eliminarContacto(contactos,n);break;
 			case 3:mostrarContactos(contactos,n);break;
+			case 4:mostrarOrdenadoPorDominio(contactos,n);break;
 		}
 	}while(true);
 	return 0;
