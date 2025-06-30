@@ -75,7 +75,7 @@ int main(){
 	contactoEmail contactos[100];
 	int n=0,op;
 	do{
-		cout<<"1. Agregar contacto\n2. Eliminar contacto\n3. Mostrar contactos\n4. Mostrar ordenado por servidor\nOpcion: ";
+		cout<<"1. Agregar contacto\n2. Eliminar contacto\n3. Mostrar contactos\n4. Mostrar ordenado por servidor\n5. SalirOpcion: ";
 		cin>>op;
 		switch(op){
 			case 1:agregarContacto(contactos,n);break;
@@ -83,6 +83,6 @@ int main(){
 			case 3:mostrarContactos(contactos,n);break;
 			case 4:mostrarOrdenadoPorDominio(contactos,n);break;
 		}
-	}while(true);
+	}while(op!=5);
 	return 0;
 }
